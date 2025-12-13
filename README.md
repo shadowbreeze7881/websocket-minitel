@@ -95,7 +95,7 @@ pyinstaller ^
   ```
   ### Résultat :
 
-- dist/websocket-minitel.exe
+dist/websocket-minitel.exe
 ### Compilation Linux
 ```bash
 pyinstaller \
@@ -107,11 +107,11 @@ pyinstaller \
 
 ### Résultat :
 
-- dist/websocket-minitel
-- 
+dist/websocket-minitel
+  
 ### L’exécutable est spécifique à l’OS :
 
-- Un .exe Windows doit être compilé sous Windows, idem pour Linux/macOS.
+Un .exe Windows doit être compilé sous Windows, idem pour Linux/macOS.
 
 ## Compilation macOS
 
@@ -124,12 +124,10 @@ pyinstaller \
 ```
 ### Résultat :
 
-- dist/websocket-minitel.app
-#### Note macOS (SSL) :
-- Le script utilise un contexte SSL non vérifié pour éviter certains problèmes de certificats (wss://) sur macOS.
+dist/websocket-minitel.app
 
-#### Ports série – Permissions
-- Linux
+### Ports série – Permissions
+Linux
 Ajouter l’utilisateur au groupe dialout :
 
 ```bash
@@ -137,8 +135,10 @@ sudo usermod -a -G dialout $USER
 ```
 
 Puis redémarrer la session.
+### Note macOS (SSL) :
+Le script utilise un contexte SSL non vérifié pour éviter certains problèmes de certificats (wss://) sur macOS.
 
-#### macOS
+### macOS
 Autoriser l’accès au port série dans :
 
 -Réglages → Sécurité et confidentialité → Confidentialité → Accès complet au disque
