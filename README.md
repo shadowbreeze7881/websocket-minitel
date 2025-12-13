@@ -167,6 +167,17 @@ Autoriser l’accès au port série dans :
 
 - Lancer depuis un terminal pour voir les erreurs
 
-#### Licence
+## Licence
 Projet libre – utilisation et modification autorisées.
+
+Ce projet a été développé à des fins personnelles et éducatives,
+en s’inspirant de projets existants de la communauté Minitel.
+
+## Crédits / Sources
+
+Ce projet s’appuie sur et s’inspire des travaux suivants :
+
+- **websocket2minitel** par @cquest  
+  https://github.com/cquest/websocket2minitel
+  
 ---
