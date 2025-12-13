@@ -44,7 +44,7 @@ cd websocket-minitel
 ```
 - Créer un environnement virtuel (recommandé)
 ```bash
-python3.14 -m venv venv
+python3 -m venv venv
 ```
 ### 2. Activation :
 
