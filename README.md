@@ -7,6 +7,9 @@ L’application assure une communication bidirectionnelle :
 - Minitel → WebSocket
 
 Elle est compatible **Windows, Linux et macOS**.
+## Démonstration
+
+![Capture d’écran](https://github.com/labbej27/websocket-minitel/raw/master/Capture%20d%E2%80%99e%CC%81cran%202025-12-11%20a%CC%80%2023.17.08.png)
 
 ---
 
