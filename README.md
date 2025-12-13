@@ -109,7 +109,7 @@ pyinstaller \
 
 - dist/websocket-minitel
 - 
-## L’exécutable est spécifique à l’OS :
+### L’exécutable est spécifique à l’OS :
 
 - Un .exe Windows doit être compilé sous Windows, idem pour Linux/macOS.
 
