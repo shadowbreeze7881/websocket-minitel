@@ -1,31 +1,172 @@
-# websocket2minitel
+# WebSocket ↔ Minitel GUI
 
-Very simple, quick and dirty python script creating a bridge between a websocket based vidotex server and a local Minitel connected through a serial port.
+Interface graphique Python permettant de connecter un **Minitel (ou émulateur)** via un **port série** à un **serveur WebSocket** (MiniPAVI, BBS, etc.).
 
-## Requirements
+L’application assure une communication bidirectionnelle :
+- WebSocket → Minitel
+- Minitel → WebSocket
 
-python modules:
-- websockets
-- pyserial
+Elle est compatible **Windows, Linux et macOS**.
 
-## Install
+---
 
-pip3 install -r requirements.txt
+## Fonctionnalités
 
-## Usage
+- Interface graphique Tkinter simple
+- Détection automatique des ports série
+- Paramétrage complet :
+  - Vitesse (baudrate)
+  - Parité
+  - Bits de données
+  - Bits de stop
+- Liste de serveurs WebSocket prédéfinis
+- Support `ws://` et `wss://`
+- Journalisation en temps réel
+- Gestion asynchrone (WebSocket + Série)
 
-python3 websocket2minitel.py <websocketURL> <serialPort> <serialSpeed>
+---
 
-## Examples
+## Prérequis
 
-Connect to 3615co.de and display at 1200 bps
+- **Python 3.14** (ou ≥ 3.10 recommandé)
+- Un Minitel réel ou un émulateur série
+- Accès à un serveur WebSocket Minitel
 
-`python3 websocket2minitel.py 'wss://3615co.de/ws' /dev/ttyUSB0 1200`
+---
 
-Connect to 3611.re (Annuaire Electronique re-creation)
+## Installation
 
-`python3 websocket2minitel.py 'ws://3611.re/ws' /dev/ttyUSB0 1200`
+### 1. Cloner le projet
 
-Connect to 3614 HACKER revival and display at 4800 bps (Minitel 1 bistandard and above)
+```bash
+git clone https://github.com/labbej27websocket-minitel.git
+cd websocket-minitel
+```
+- Créer un environnement virtuel (recommandé)
+```bash
+python3.14 -m venv venv
+```
+### 2. Activation :
 
-`python3 websocket2minitel.py 'ws://mntl.joher.com:2018' /dev/ttyUSB0 4800`
+Windows
+
+```bash
+venv\Scripts\activate
+```
+
+Linux / macOS
+
+```bash
+source venv/bin/activate
+```
+### 4. Installer les dépendances
+
+```bash
+pip install -r requirements.txt
+```
+### 5. Lancement du programme
+```bash
+python websocket_minitel.py
+pip install -r requirements.txt
+```
+
+Une fenêtre graphique s’ouvre permettant de configurer et lancer la connexion.
+
+## Compilation en exécutable
+La compilation permet d’obtenir un binaire autonome (sans Python requis).
+
+Outil utilisé
+PyInstaller
+
+### Installation :
+
+
+```bash
+pip install pyinstaller
+```
+
+### Compilation Windows
+```bash
+pyinstaller ^
+  --onefile ^
+  --windowed ^
+  --name websocket-minitel ^
+  websocket_minitel.py
+  ```
+  ### Résultat :
+
+- dist/websocket-minitel.exe
+### Compilation Linux
+```bash
+pyinstaller \
+  --onefile \
+  --windowed \
+  --name websocket-minitel \
+  websocket_minitel.py
+```
+
+### Résultat :
+
+- dist/websocket-minitel
+- 
+## L’exécutable est spécifique à l’OS :
+
+- Un .exe Windows doit être compilé sous Windows, idem pour Linux/macOS.
+
+## Compilation macOS
+
+```bash
+pyinstaller \
+  --onefile \
+  --windowed \
+  --name websocket-minitel \
+  websocket_minitel.py
+```
+### Résultat :
+
+- dist/websocket-minitel.app
+#### Note macOS (SSL) :
+- Le script utilise un contexte SSL non vérifié pour éviter certains problèmes de certificats (wss://) sur macOS.
+
+#### Ports série – Permissions
+- Linux
+Ajouter l’utilisateur au groupe dialout :
+
+```bash
+sudo usermod -a -G dialout $USER
+```
+
+Puis redémarrer la session.
+
+#### macOS
+Autoriser l’accès au port série dans :
+
+-Réglages → Sécurité et confidentialité → Confidentialité → Accès complet au disque
+
+###  Serveurs WebSocket intégrés
+- MiniPAVI (officiel)
+
+- Hacker
+
+- Annuaire
+
+- 3615
+
+- Retrocampus
+
+- LABBEJ27
+
+- Saisie manuelle
+
+### Dépannage
+- Vérifier le port série sélectionné
+
+- Vérifier la vitesse (souvent 1200 bauds pour Minitel)
+
+- Tester sans SSL (ws://) si possible
+
+- Lancer depuis un terminal pour voir les erreurs
+
+#### Licence
+Projet libre – utilisation et modification autorisées.
+---
