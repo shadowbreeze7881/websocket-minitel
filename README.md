@@ -38,20 +38,20 @@ Screenshot - (https://github.com/labbej27/websocket-minitel/raw/master/Capture%2
 
 ---
 
-## 1. Installation
+## Installation
 
-- Clone the project
+### 1. Clone the project
+
 ```bash
 git clone https://github.com/labbej27websocket-minitel.git
 cd websocket-minitel
 ```
-
-- Create a virtual environment (recommended)
+### 2. Create a virtual environment (recommended)
 ```bash
 python3 -m venv venv
 ```
 
-## 2. Activation
+### 3. Activate the environment
 
 - Windows (using Cygwin or any other unix-like environment program under Windows)
 ```bash
@@ -63,16 +63,14 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-### 3. Install the dependencies
+### 4. Install the dependencies
 
--
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Launch the program
+### 5. Launch the program
 
--
 ```bash
 python websocket_minitel.py
 pip install -r requirements.txt
@@ -85,13 +83,13 @@ A graphical window opens, allowing you to configure and initiate the connection.
 ## Compiling an executable file
 The compilation process produces a standalone binary (no Python required), using PyInstaller.
 
-### Installation :
+### To install pyinstall, pip is needed :
 
 ```bash
 pip install pyinstaller
 ```
 
-### Windows Compilation
+### Compiling under Windows
 
 ```bash
 pyinstaller ^
@@ -101,12 +99,29 @@ pyinstaller ^
   websocket_minitel.py
 ```
 
-### Result: 
+#### Result: 
 ```bash
 dist/websocket-minitel.exe
 ```
 
-### Compilation Linux
+### Compiling under Linux
+```bash
+pyinstaller \
+  --onefile \
+  --windowed \
+  --name websocket-minitel \
+  websocket_minitel.py
+```
+
+#### Result :
+
+dist/websocket-minitel
+  
+### Note :
+A Windows .exe file must be compiled on Windows, and the same applies to Linux/macOS.
+
+## Compiling under macOS
+
 ```bash
 pyinstaller \
   --onefile \
@@ -117,43 +132,27 @@ pyinstaller \
 
 ### Result :
 
-dist/websocket-minitel
-  
-### L’exécutable est spécifique à l’OS :
-
-Un .exe Windows doit être compilé sous Windows, idem pour Linux/macOS.
-
-## Compilation macOS
-
-```bash
-pyinstaller \
-  --onefile \
-  --windowed \
-  --name websocket-minitel \
-  websocket_minitel.py
-```
-### Résultat :
-
 dist/websocket-minitel.app
 
-### Ports série – Permissions
-Linux
-Ajouter l’utilisateur au groupe dialout :
+### Serial Port – Permissions
+#### Linux
+Add the user to the dialout group:
 
 ```bash
 sudo usermod -a -G dialout $USER
 ```
 
-Puis redémarrer la session.
-### Note macOS (SSL) :
-Le script utilise un contexte SSL non vérifié pour éviter certains problèmes de certificats (wss://) sur macOS.
+Then restart the session.
 
 ### macOS
-Autoriser l’accès au port série dans :
+Allow access to the serial port in:
 
--Réglages → Sécurité et confidentialité → Confidentialité → Accès complet au disque
+-Settings → Security and Privacy → Privacy → Full Disk Access
 
-###  Serveurs WebSocket intégrés
+#### Note macOS (SSL) :
+The script uses an unverified SSL context to avoid certain certificate issues (wss://) on macOS.
+
+###  Integrated WebSocket servers
 - MiniPAVI (officiel)
 
 - Hacker
@@ -168,29 +167,28 @@ Autoriser l’accès au port série dans :
 
 - Saisie manuelle
 
-### Dépannage
-- Vérifier le port série sélectionné
+### Troubleshooting
+- Verify the selected serial port.
 
-- Vérifier la vitesse (souvent 1200 bauds pour Minitel)
+- Check the baud rate (often 1200 baud for Minitel).
 
-- Tester sans SSL (ws://) si possible
+- Test without SSL (ws://) if possible.
 
-- Lancer depuis un terminal pour voir les erreurs
+- Run from a terminal to see any error messages.
 
 ## Licence
+This project is free to use, modify, and redistribute
+for non-commercial purposes.
 
-Ce projet est libre d'utilisation, de modification et de redistribution
-à des fins non commerciales.
+Any commercial use is prohibited without the explicit permission
+of the author.
 
-Toute utilisation commerciale est interdite sans autorisation explicite
-de l'auteur.
-
-Ce projet a été développé à des fins personnelles et éducatives,
-en s’inspirant de projets existants de la communauté Minitel.
+This project was developed for personal and educational purposes,
+inspired by existing projects from the Minitel community.
 
 ## Crédits / Sources
 
-Ce projet s’appuie sur et s’inspire des travaux suivants :
+This project is based on and inspired by the following works:
 
 - **websocket2minitel** par @cquest  
   https://github.com/cquest/websocket2minitel
