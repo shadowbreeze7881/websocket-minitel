@@ -39,8 +39,8 @@ async def websocket_task(url, tty, speed, parity, databits, stopbits, status_lab
     }
 
     try:
-        # Ouverture port série
-        log(f"Ouverture du port série {tty} à {speed} bauds…", log_widget)
+        # Serial port opening
+        log(f"Serial port opening {tty} at {speed} bauds…", log_widget)
         ser = serial.Serial(
             tty,
             int(speed),
@@ -51,15 +51,15 @@ async def websocket_task(url, tty, speed, parity, databits, stopbits, status_lab
         )
 
         # Connexion WebSocket
-        log(f"Connexion au WebSocket {url}…", log_widget)
+        log(f"Connexion to WebSocket {url}…", log_widget)
 
         if url.startswith("wss://"):
-            log("Utilisation d’un contexte SSL non vérifié (wss)…", log_widget)
+            log("Using an unverified SSL context (wss)…", log_widget)
             ws = await websockets.connect(url, ssl=ssl_context)
         else:
             ws = await websockets.connect(url)
 
-        log("Connexion établie.", log_widget)
+        log("Connexion established.", log_widget)
         status_label.config(text="Connecté")
 
         # Message test Minitel
@@ -93,12 +93,12 @@ async def websocket_task(url, tty, speed, parity, databits, stopbits, status_lab
         await asyncio.gather(w2m(), m2w())
 
     except Exception as e:
-        log(f"Erreur : {e}", log_widget)
+        log(f"Error : {e}", log_widget)
         status_label.config(text="Erreur")
 
     finally:
         running = False
-        log("Déconnexion…", log_widget)
+        log("Disconnexion…", log_widget)
         try:
             if ws:
                 await ws.close()
@@ -109,8 +109,8 @@ async def websocket_task(url, tty, speed, parity, databits, stopbits, status_lab
                 ser.close()
         except:
             pass
-        status_label.config(text="Déconnecté")
-        log("Connexions fermées.", log_widget)
+        status_label.config(text="Disconnected")
+        log("Connexions closed.", log_widget)
 
 
 # ─────────────────────────────────────────────
@@ -134,7 +134,7 @@ def stop_connection(status_label, log_widget):
     global running
     running = False
     status_label.config(text="Déconnecté")
-    log("Arrêt demandé.", log_widget)
+    log("Stop requested.", log_widget)
 
 
 # ─────────────────────────────────────────────
@@ -157,7 +157,7 @@ def build_gui():
     root = tk.Tk()
     root.title("WebSocket ↔ Minitel")
 
-    # LISTE DE SERVEURS
+    # LISTE OF SERVERS
     SERVERS = {
         "MiniPAVI (officiel)": "wss://go.minipavi.fr:8181",
         "Hacker": "ws://mntl.joher.com:2018",
@@ -168,13 +168,13 @@ def build_gui():
         "Saisie manuelle…": ""
     }
 
-    tk.Label(root, text="Serveur prédéfini").grid(row=0, column=0)
+    tk.Label(root, text="Predefined server").grid(row=0, column=0)
     server_combo = ttk.Combobox(root, values=list(SERVERS.keys()), width=40)
     server_combo.set("MiniPAVI (officiel)")
     server_combo.grid(row=0, column=1)
 
     # Champ URL modifiable
-    tk.Label(root, text="Adresse WebSocket").grid(row=1, column=0)
+    tk.Label(root, text="WebSocket Address").grid(row=1, column=0)
     url_entry = tk.Entry(root, width=40)
     url_entry.insert(0, SERVERS["MiniPAVI (officiel)"])
     url_entry.grid(row=1, column=1)
@@ -186,23 +186,23 @@ def build_gui():
 
     server_combo.bind("<<ComboboxSelected>>", on_server_change)
 
-    # PORT SERIE
-    tk.Label(root, text="Port série").grid(row=2, column=0)
+    # SERIAL PORT
+    tk.Label(root, text="Serial port").grid(row=2, column=0)
     ports = [p.device for p in serial.tools.list_ports.comports()]
     port_combo = ttk.Combobox(root, values=ports, width=20)
     if ports:
         port_combo.set(ports[0])
     port_combo.grid(row=2, column=1)
 
-    # VITESSE
-    tk.Label(root, text="Vitesse").grid(row=3, column=0)
+    # SPEED
+    tk.Label(root, text="Speed").grid(row=3, column=0)
     speeds = ["1200", "4800", "9600", "19200"]
     speed_combo = ttk.Combobox(root, values=speeds, width=20)
     speed_combo.set("1200")
     speed_combo.grid(row=3, column=1)
 
-    # PARITÉ
-    tk.Label(root, text="Parité").grid(row=4, column=0)
+    # PARITY
+    tk.Label(root, text="Parity").grid(row=4, column=0)
     parity_map = {
         "Even (pair)": serial.PARITY_EVEN,
         "Odd (impair)": serial.PARITY_ODD,
@@ -214,14 +214,14 @@ def build_gui():
     parity_combo.set("Even (pair)")
     parity_combo.grid(row=4, column=1)
 
-    # DATABITS
-    tk.Label(root, text="Bits de données").grid(row=5, column=0)
+    # DATA BITS
+    tk.Label(root, text="Data Bits").grid(row=5, column=0)
     databits_combo = ttk.Combobox(root, values=["7", "8"], width=20)
     databits_combo.set("7")
     databits_combo.grid(row=5, column=1)
 
-    # STOPBITS
-    tk.Label(root, text="Bits de stop").grid(row=6, column=0)
+    # STOP BITS
+    tk.Label(root, text="Stop bits").grid(row=6, column=0)
     stopbits_combo = ttk.Combobox(root, values=["1", "1.5", "2"], width=20)
     stopbits_combo.set("1")
     stopbits_combo.grid(row=6, column=1)
@@ -230,11 +230,11 @@ def build_gui():
     log_widget = scrolledtext.ScrolledText(root, width=60, height=15, state="disabled")
     log_widget.grid(row=8, column=0, columnspan=2, padx=5, pady=5)
 
-    # STATUT
-    status_label = tk.Label(root, text="En attente…")
+    # STATUS
+    status_label = tk.Label(root, text="On hold…")
     status_label.grid(row=9, column=0, columnspan=2)
 
-    # BOUTONS
+    # BUTTONS
     tk.Button(
         root,
         text="Connecter",
@@ -252,7 +252,7 @@ def build_gui():
 
     tk.Button(
         root,
-        text="Déconnecter",
+        text="Disconnect",
         command=lambda: stop_connection(status_label, log_widget)
     ).grid(row=7, column=1)
 
