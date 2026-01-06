@@ -43,7 +43,7 @@ Screenshot - (https://github.com/labbej27/websocket-minitel/raw/master/Capture%2
 ### 1. Clone the project
 
 ```bash
-git clone https://github.com/shadowbreezewebsocket-minitel.git
+[git clone https://github.com/shadowbreezewebsocket-minitel.git](https://github.com/shadowbreeze7881/websocket-minitel.git)
 cd websocket-minitel
 ```
 ### 2. Create a virtual environment (recommended)
