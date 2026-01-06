@@ -73,7 +73,6 @@ pip install -r requirements.txt
 
 ```bash
 python websocket_minitel.py
-pip install -r requirements.txt
 ```
 
 A graphical window opens, allowing you to configure and initiate the connection.
