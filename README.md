@@ -77,27 +77,23 @@ pip install -r requirements.txt
 A graphical window opens, allowing you to configure and initiate the connection.
 
 ## Compiling an executable file
-The compilation process produces a standalone binary (no Python required).
+The compilation process produces a standalone binary (no Python required), using PyInstaller.
 
-Outil utilisé
-PyInstaller
+---
 
 ### Installation :
 
-
-```bash
 pip install pyinstaller
-```
 
-### Compilation Windows
-```bash
+### Windows Compilation
+
 pyinstaller ^
   --onefile ^
   --windowed ^
   --name websocket-minitel ^
   websocket_minitel.py
-  ```
-  ### Résultat :
+
+### Result: 
 
 dist/websocket-minitel.exe
 ### Compilation Linux
