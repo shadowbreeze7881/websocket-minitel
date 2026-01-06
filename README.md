@@ -1,82 +1,83 @@
 # WebSocket ↔ Minitel GUI
 
-Interface graphique Python permettant de connecter un **Minitel (ou émulateur)** via un **port série** à un **serveur WebSocket** (MiniPAVI, BBS, etc.).
+(This is just an English translation of the program. I will not respond to any technical questions)
 
-L’application assure une communication bidirectionnelle :
+Python graphical interface that allows you to connect a **Minitel (or emulator)** via a **serial port** to a **WebSocket server** (MiniPAVI, BBS, etc.).
+
+The application provides two-way communication:
 - WebSocket → Minitel
 - Minitel → WebSocket
 
-Elle est compatible **Windows, Linux et macOS**.
-## Démonstration
+It is compatible with **Windows, Linux and macOS**.
 
-![Capture d’écran](https://github.com/labbej27/websocket-minitel/raw/master/Capture%20d%E2%80%99e%CC%81cran%202025-12-11%20a%CC%80%2023.17.08.png)
+## Demonstration
 
----
-
-## Fonctionnalités
-
-- Interface graphique Tkinter simple
-- Détection automatique des ports série
-- Paramétrage complet :
-  - Vitesse (baudrate)
-  - Parité
-  - Bits de données
-  - Bits de stop
-- Liste de serveurs WebSocket prédéfinis
-- Support `ws://` et `wss://`
-- Journalisation en temps réel
-- Gestion asynchrone (WebSocket + Série)
+![Screenshot] (https://github.com/labbej27/websocket-minitel/raw/master/Capture%20d%E2%80%99e%CC%81cran%202025-12-11%20a%CC%80%2023.17.08.png)
 
 ---
 
-## Prérequis
+## Features
 
-- **Python 3.14** (ou ≥ 3.10 recommandé)
-- Un Minitel réel ou un émulateur série
-- Accès à un serveur WebSocket Minitel
+- Simple Tkinter graphical interface
+- Automatic serial port detection
+- Comprehensive settings:
+  - Baud rate
+  - Parity
+  - Data bits
+  - Stop bits
+- List of predefined WebSocket servers
+- Supports `ws://` and `wss://`
+- Real-time logging
+- Asynchronous handling (WebSocket + Serial)
 
 ---
 
-## Installation
+## Prerequisites
 
-### 1. Cloner le projet
+- **Python 3.14** (or 3.10 or later recommended)
+- A real Minitel terminal or a serial emulator
+- Access to a Minitel WebSocket server
 
-```bash
+---
+
+The steps below were tested and performed in a bash shell environment.
+
+## 1. Installation
+
+- Clone the project
 git clone https://github.com/labbej27websocket-minitel.git
 cd websocket-minitel
-```
-- Créer un environnement virtuel (recommandé)
-```bash
+
+- Create a virtual environment (recommended)
 python3 -m venv venv
-```
-### 2. Activation :
 
-Windows
+---
 
-```bash
+## 2. Activation
+
+- Windows (using bash shell in Cygwin or any other Unix-like environment program)
 venv\Scripts\activate
-```
 
-Linux / macOS
-
-```bash
+- Linux / macOS
 source venv/bin/activate
-```
-### 4. Installer les dépendances
 
-```bash
+---
+
+### 3. Install the dependencies
+
 pip install -r requirements.txt
-```
-### 5. Lancement du programme
-```bash
+
+---
+
+### 4. Launch the program
+
 python websocket_minitel.py
 pip install -r requirements.txt
-```
 
-Une fenêtre graphique s’ouvre permettant de configurer et lancer la connexion.
+A graphical window opens, allowing you to configure and initiate the connection.
 
-## Compilation en exécutable
-La compilation permet d’obtenir un binaire autonome (sans Python requis).
+## Compiling an executable file
+The compilation process produces a standalone binary (no Python required).
 
 Outil utilisé
 PyInstaller
