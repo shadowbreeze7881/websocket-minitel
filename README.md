@@ -12,7 +12,7 @@ It is compatible with **Windows, Linux and macOS**.
 
 ## Demonstration
 
-![Screenshot] (https://github.com/labbej27/websocket-minitel/raw/master/Capture%20d%E2%80%99e%CC%81cran%202025-12-11%20a%CC%80%2023.17.08.png)
+Screenshot - (https://github.com/labbej27/websocket-minitel/raw/master/Capture%20d%E2%80%99e%CC%81cran%202025-12-11%20a%CC%80%2023.17.08.png)
 
 ---
 
