@@ -10,11 +10,11 @@ The application provides two-way communication:
 
 It is compatible with **Windows, Linux and macOS**.
 
+---
+
 ## Demonstration
 
 Screenshot - (https://github.com/labbej27/websocket-minitel/raw/master/Capture%20d%E2%80%99e%CC%81cran%202025-12-11%20a%CC%80%2023.17.08.png)
-
----
 
 ## Features
 
@@ -30,8 +30,6 @@ Screenshot - (https://github.com/labbej27/websocket-minitel/raw/master/Capture%2
 - Real-time logging
 - Asynchronous handling (WebSocket + Serial)
 
----
-
 ## Prerequisites
 
 - **Python 3.14** (or 3.10 or later recommended)
@@ -40,62 +38,71 @@ Screenshot - (https://github.com/labbej27/websocket-minitel/raw/master/Capture%2
 
 ---
 
-The steps below were tested and performed in a bash shell environment.
-
 ## 1. Installation
 
 - Clone the project
+```bash
 git clone https://github.com/labbej27websocket-minitel.git
 cd websocket-minitel
+```
 
 - Create a virtual environment (recommended)
+```bash
 python3 -m venv venv
-
----
+```
 
 ## 2. Activation
 
 - Windows (using bash shell in Cygwin or any other Unix-like environment program)
+```bash
 venv\Scripts\activate
+```
 
 - Linux / macOS
+```bash
 source venv/bin/activate
-
----
+```
 
 ### 3. Install the dependencies
 
+```bash
 pip install -r requirements.txt
-
----
+```
 
 ### 4. Launch the program
 
+```bash
 python websocket_minitel.py
 pip install -r requirements.txt
-
+```
 A graphical window opens, allowing you to configure and initiate the connection.
+
+---
 
 ## Compiling an executable file
 The compilation process produces a standalone binary (no Python required), using PyInstaller.
 
----
-
 ### Installation :
 
+```bash
 pip install pyinstaller
+```
 
 ### Windows Compilation
 
+```bash
 pyinstaller ^
   --onefile ^
   --windowed ^
   --name websocket-minitel ^
   websocket_minitel.py
+```
 
 ### Result: 
-
+```bash
 dist/websocket-minitel.exe
+```
+
 ### Compilation Linux
 ```bash
 pyinstaller \
@@ -105,7 +112,7 @@ pyinstaller \
   websocket_minitel.py
 ```
 
-### Résultat :
+### Result :
 
 dist/websocket-minitel
   
