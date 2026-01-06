@@ -53,7 +53,7 @@ python3 -m venv venv
 
 ## 2. Activation
 
-- Windows (using bash shell in Cygwin or any other Unix-like environment program)
+- Windows (using Cygwin or any other unix-like environment program under Windows)
 ```bash
 venv\Scripts\activate
 ```
@@ -65,16 +65,19 @@ source venv/bin/activate
 
 ### 3. Install the dependencies
 
+-
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 4. Launch the program
 
+-
 ```bash
 python websocket_minitel.py
 pip install -r requirements.txt
 ```
+
 A graphical window opens, allowing you to configure and initiate the connection.
 
 ---
